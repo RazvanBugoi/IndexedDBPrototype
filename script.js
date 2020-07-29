@@ -1,13 +1,15 @@
 let notes = document.getElementById('insert');
 let add = document.getElementById('add');
+let list = document.getElementById('list');
 
 let prototype = [];
 
 add.onclick = insertNote 
 
-function insertNote(item) {
-    if(item.value == '') alert('Input field should not be empty.');
-    let notes = document.createElement('li');
-    notes.innerHTML = `${item.value}`;
-    list.appendChild(notes);
+function insertNote() {
+    if(notes.value == '') alert('Input field should not be empty.');
+    let info = document.createElement('li');
+    info.innerHTML = `Test`;
+    console.log(info);
+    list.appendChild(info);
 }
