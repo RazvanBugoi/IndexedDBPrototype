@@ -41,8 +41,12 @@ add.onclick = test();
 
 function insertNote(notesCollection) {
     if(notes.value == '') alert('Input field should not be empty.');
+    for (let i=0; i<notesCollection.length; i++){
+        let showOnScreen = <li>`${notesCollection[i].title}`</li>;
+    }
     let info = document.createElement('li');
-    info.innerHTML = `${notes.value}`;
+    info.innerHTML = showOnScreen;
+    list.appendChild(info);
 }
 
 function test(database) {
