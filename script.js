@@ -39,7 +39,7 @@ function parseNotes(database) {
 
 add.onclick = test(); 
 
-function insertNote() {
+function insertNote(notesCollection) {
     if(notes.value == '') alert('Input field should not be empty.');
     let info = document.createElement('li');
     info.innerHTML = `${notes.value}`;
