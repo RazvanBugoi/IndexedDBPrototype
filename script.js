@@ -3,7 +3,7 @@ let add = document.getElementById('add');
 let list = document.getElementById('list');
 
 let notesCollection = []; 
-
+let database;
 const request = indexedDB.open('Database', 1);
 
 request.onupgradeneeded = function(e) {
@@ -31,27 +31,26 @@ function parseNotes(database) {
             notesCollection.push(cursor.value);
             cursor.continue();
         } else {
-            insertNote(notesCollection);
+            // insertNote(notesCollection);
         }
     }
 }
 
 
-add.onclick = test(); 
+add.onclick = test; 
 
 function insertNote(notesCollection) {
-    if(notes.value == '') alert('Input field should not be empty.');
     for (let i=0; i<notesCollection.length; i++){
-        let showOnScreen = <li>`${notesCollection[i].title}`</li>;
+        let displayItem = document.createElement('li');
+        displayItem.innerHTML = notesCollection[i].title;
+        list.appendChild(displayItem);
     }
-    let info = document.createElement('li');
-    info.innerHTML = showOnScreen;
-    list.appendChild(info);
 }
 
-function test(database) {
+function test() {
+    if(notes.value == '') alert('Input field should not be empty.');
     obj = {
-        title: null,
+        title: 'exemplul 1',
         date: new Date().getDate(),
         time: new Date().getTime()
     };
