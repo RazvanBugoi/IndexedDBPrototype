@@ -31,7 +31,7 @@ function parseNotes(database) {
             notesCollection.push(cursor.value);
             cursor.continue();
         } else {
-            // insertNote(notesCollection);
+            insertNote(notesCollection);
         }
     }
 }
@@ -50,11 +50,13 @@ function insertNote(notesCollection) {
 function test() {
     if(notes.value == '') alert('Input field should not be empty.');
     obj = {
-        title: 'exemplul 1',
+        title: notes.value,
         date: new Date().getDate(),
         time: new Date().getTime()
     };
     let tx = database.transaction('personal_notes', 'readwrite');
     let myPost = tx.objectStore('personal_notes');
     myPost.add(obj);
+    notes.value = '';
+    location.reload();
 }
