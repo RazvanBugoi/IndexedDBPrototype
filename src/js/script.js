@@ -58,5 +58,4 @@ function test() {
     let myPost = tx.objectStore('personal_notes');
     myPost.add(obj);
     notes.value = '';
-    location.reload();
 }
